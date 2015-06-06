@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.uqbar.paco.dsl.tortuga.ui
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.uqbar.paco.dsl.tortuga.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.uqbar.paco.dsl.tortuga;visibility:=reexport,
+ org.eclipse.xtext.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.ui,
+ org.eclipse.xtext.builder,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types.ui,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.compare,
+ org.eclipse.core.runtime,
+ org.eclipse.jdt.launching;bundle-version="3.7.1"
+Import-Package: org.apache.log4j,
+ org.eclipse.xtext.xbase.lib
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.uqbar.paco.dsl.ui.quickfix,
+ org.uqbar.paco.dsl.ui.contentassist,
+ org.uqbar.paco.dsl.ui.contentassist.antlr,
+ org.uqbar.paco.dsl.ui.internal
+Bundle-Activator: org.uqbar.paco.dsl.ui.internal.TortugaDSLActivator
+

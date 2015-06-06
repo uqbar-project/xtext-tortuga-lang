@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.uqbar.paco.dsl.tortuga/src-gen" editDirectory="/org.uqbar.paco.dsl.tortuga.edit/src"
+    editorDirectory="/org.uqbar.paco.dsl.tortuga.editor/src" modelPluginID="org.uqbar.paco.dsl.tortuga"
+    forceOverwrite="true" modelName="TortugaDSL" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="org.uqbar.paco.dsl.tortuga.edit"
+    editorPluginID="org.uqbar.paco.dsl.tortuga.editor" runtimeVersion="2.10">
+  <genPackages prefix="TortugaDSL" basePackage="org.uqbar.paco.dsl" disposableProviderFactory="true"
+      fileExtensions="tortu" ecorePackage="TortugaDSL.ecore#/">
+    <genClasses ecoreClass="TortugaDSL.ecore#//TortugaProgram">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//TortugaProgram/sentences"/>
+    </genClasses>
+    <genClasses ecoreClass="TortugaDSL.ecore#//SENTENCE"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//MOVE">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//MOVE/amount"/>
+    </genClasses>
+    <genClasses ecoreClass="TortugaDSL.ecore#//FORWARD"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//LEFT"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//RIGHT"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//SET_X"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//SET_Y"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//DRAWING_SENTENCE"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//PENDOWN"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//PENUP"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//COLOREABLE">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TortugaDSL.ecore#//COLOREABLE/color"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//COLOREABLE/colorSpec"/>
+    </genClasses>
+    <genClasses ecoreClass="TortugaDSL.ecore#//PENCOLOR"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//CANVAS_COLOR"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//COLOR_SPEC">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//COLOR_SPEC/red"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//COLOR_SPEC/green"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//COLOR_SPEC/blue"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//COLOR_SPEC/alpha"/>
+    </genClasses>
+    <genClasses ecoreClass="TortugaDSL.ecore#//FONT_SPEC"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//FONT_SIZE">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//FONT_SIZE/size"/>
+    </genClasses>
+    <genClasses ecoreClass="TortugaDSL.ecore#//FONT_STYLE">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//FONT_STYLE/style"/>
+    </genClasses>
+    <genClasses ecoreClass="TortugaDSL.ecore#//FontStyleValues"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//CLEAR"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//HOME"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//DRAW_STRING">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TortugaDSL.ecore#//DRAW_STRING/text"/>
+    </genClasses>
+    <genClasses ecoreClass="TortugaDSL.ecore#//REFERENCIABLE">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TortugaDSL.ecore#//REFERENCIABLE/name"/>
+    </genClasses>
+    <genClasses ecoreClass="TortugaDSL.ecore#//MAKE">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//MAKE/value"/>
+    </genClasses>
+    <genClasses ecoreClass="TortugaDSL.ecore#//VARIABLE_REF">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//VARIABLE_REF/toVar"/>
+    </genClasses>
+    <genClasses ecoreClass="TortugaDSL.ecore#//EXPRESSION"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//VALUE">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TortugaDSL.ecore#//VALUE/val"/>
+    </genClasses>
+    <genClasses ecoreClass="TortugaDSL.ecore#//CONTENT">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//CONTENT/var"/>
+    </genClasses>
+    <genClasses ecoreClass="TortugaDSL.ecore#//OPERATION">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//OPERATION/targetVariable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//OPERATION/valOne"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//OPERATION/valTwo"/>
+    </genClasses>
+    <genClasses ecoreClass="TortugaDSL.ecore#//SUM"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//SUBTRACT"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//MULTIPLY"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//DIVIDE"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//CONTROL_SENTENCES">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//CONTROL_SENTENCES/commands"/>
+    </genClasses>
+    <genClasses ecoreClass="TortugaDSL.ecore#//REPEAT">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//REPEAT/times"/>
+    </genClasses>
+    <genClasses ecoreClass="TortugaDSL.ecore#//TO">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute TortugaDSL.ecore#//TO/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//TO/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="TortugaDSL.ecore#//PARAM"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//PROCEDURE_CALL">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//PROCEDURE_CALL/to"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//PROCEDURE_CALL/params"/>
+    </genClasses>
+    <genClasses ecoreClass="TortugaDSL.ecore#//IF">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//IF/condition"/>
+    </genClasses>
+    <genClasses ecoreClass="TortugaDSL.ecore#//BOOLEAN_EXPRESSION">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//BOOLEAN_EXPRESSION/op1"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference TortugaDSL.ecore#//BOOLEAN_EXPRESSION/op2"/>
+    </genClasses>
+    <genClasses ecoreClass="TortugaDSL.ecore#//EQUALS"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//GREATER_THAN"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//LESSER_THAN"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//BOLD"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//ITALIC"/>
+    <genClasses ecoreClass="TortugaDSL.ecore#//PLAIN"/>
+  </genPackages>
+</genmodel:GenModel>

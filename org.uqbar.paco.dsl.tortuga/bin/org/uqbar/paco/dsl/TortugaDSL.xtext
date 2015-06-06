@@ -1,0 +1,134 @@
+grammar org.uqbar.paco.dsl.TortugaDSL with org.eclipse.xtext.common.Terminals
+
+generate tortugaDSL "http://www.uqbar.org/paco/dsl/TortugaDSL"
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+TortugaProgram:
+	sentences+=SENTENCE*;
+	
+SENTENCE:
+	// VARIABLES
+	MAKE | CONTENT
+	| PROCEDURE_CALL
+	| OPERATION
+	| CONTROL_SENTENCES
+	| MOVE
+	| DRAWING_SENTENCE
+;
+
+MOVE:
+	FORWARD | LEFT | RIGHT | SET_X | SET_Y
+;
+
+FORWARD: 'FORWARD' amount=EXPRESSION;
+LEFT: 'LEFT' amount=EXPRESSION;
+RIGHT: 'RIGHT' amount=EXPRESSION;
+SET_X: 'SETX' amount=EXPRESSION;
+SET_Y: 'SETY' amount=EXPRESSION;
+
+DRAWING_SENTENCE: 
+	PENDOWN | PENUP | CLEAR | HOME | COLOREABLE | FONT_SPEC | DRAW_STRING
+;
+
+PENDOWN: {PENDOWN} 'PENDOWN';
+PENUP: {PENUP} 'PENUP';
+
+COLOREABLE: PENCOLOR | CANVAS_COLOR;
+PENCOLOR: 'PENCOLOR' (color=COLOR | colorSpec=COLOR_SPEC);
+CANVAS_COLOR: 'CANVASCOLOR' (color=COLOR | colorSpec=COLOR_SPEC);
+COLOR_SPEC:
+	red=EXPRESSION green=EXPRESSION blue=EXPRESSION alpha=EXPRESSION
+;
+COLOR: 'BLACK'|'BLUE'|'CYAN'|'DARK GRAY'|'GRAY'|'GREEN'|'LIGHTGRAY'|'MAGENTA'|'ORANGE'|'PINK'|'RED'|'WHITE'|'YELLOW';
+
+FONT_SPEC: FONT_STYLE | FONT_SIZE;
+FONT_SIZE: 'FONTSIZE' size=EXPRESSION;
+FONT_STYLE: 'FONTSTYLE' style=FontStyleValues;
+FontStyleValues:
+	{BOLD} 'BOLD' | {ITALIC} 'ITALIC' | {PLAIN} 'PLAIN'
+;
+
+CLEAR: {CLEAR} 'CLEAR';
+HOME: {HOME} 'HOME';
+
+DRAW_STRING:
+	'DRAWSTRING' text=STRING
+;
+
+REFERENCIABLE:
+	MAKE | PARAM
+;
+
+MAKE: 'MAKE' name=ID '=' value=EXPRESSION;
+VARIABLE_REF: toVar=[REFERENCIABLE];
+
+EXPRESSION:  
+	VARIABLE_REF | VALUE
+;
+
+VALUE:
+	val=DOUBLE
+;
+
+CONTENT:
+	'CONTENT' var=[MAKE]
+;
+
+OPERATION:
+	  SUM
+	| SUBTRACT
+	| MULTIPLY
+	| DIVIDE
+;
+
+SUM: 		'SUM' targetVariable=[MAKE] '=' valOne=EXPRESSION '+' valTwo=EXPRESSION;
+SUBTRACT: 	'SUBTRACT' targetVariable=[MAKE] '=' valOne=EXPRESSION  '-' valTwo=EXPRESSION;
+MULTIPLY: 	'MULTIPLY' targetVariable=[MAKE] '=' valOne=EXPRESSION  '*' valTwo=EXPRESSION;
+DIVIDE: 	'DIVIDE' targetVariable=[MAKE] '=' valOne=EXPRESSION  '/' valTwo=EXPRESSION;
+
+
+CONTROL_SENTENCES:
+	REPEAT | TO | IF
+;
+
+REPEAT:
+	'REPEAT' times=EXPRESSION
+		(commands+=SENTENCE)+
+	'END REPEAT'
+;
+
+// define una funcion/procedimiento
+TO: 
+	'TO' name=ID (parameters+=PARAM)*
+		(commands+=SENTENCE)+
+	'END TO'
+;
+PARAM:
+	':' name=ID
+;
+
+// llamada
+PROCEDURE_CALL:
+	to=[TO] (params+=EXPRESSION)*
+;
+
+
+IF:
+	'IF' condition=BOOLEAN_EXPRESSION
+		(commands+=SENTENCE)+
+	'END IF'
+;
+
+BOOLEAN_EXPRESSION:
+	EQUALS
+	| GREATER_THAN
+	| LESSER_THAN
+;
+
+EQUALS: 		op1=EXPRESSION '=' op2=EXPRESSION;
+GREATER_THAN: 	op1=EXPRESSION '>' op2=EXPRESSION;
+LESSER_THAN: 	op1=EXPRESSION '<' op2=EXPRESSION;
+
+//terminal DEGREES returns ecore::EInt: ('0'..'9')+ '°';
+terminal DOUBLE returns ecore::EDouble: ('0'..'9')+ ('.' ('0'..'9')+)?;
